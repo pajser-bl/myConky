@@ -1,0 +1,61 @@
+update_interval 0.5
+total_run_times 0
+net_avg_samples 1
+cpu_avg_samples 1
+format_human_readable
+use_xft yes
+font DejaVu Sans Mono:size=11
+own_window yes
+own_window_type desktop
+own_window_transparent yes
+own_window_argb_visual yes
+alignment top_right
+gap_x 10
+gap_y 40
+minimum_size 182 5
+maximum_width 212
+default_bar_size 60 8
+draw_borders no
+draw_graph_borders no
+draw_outline no
+draw_shades no
+default_color white
+default_shade_color white
+default_outline_color white
+double_buffer yes
+default_colour white
+default_outline_color white
+default_shade_color white
+show_graph_scale no
+show_graph_range no
+double_buffer yes
+no_buffers yes
+stippled_borders 0
+uppercase no
+use_spacer none
+
+TEXT
+
+Uptime$alignr$uptime
+Ver$alignr$kernel
+
+IP$alignr${addr eth0}
+
+Inbound$alignr${downspeed eth0}
+${downspeedgraph eth0 60,212}
+
+Outbound$alignr${upspeed eth0}
+${upspeedgraph eth0 60,212}
+
+Processes:$processes($running_processes)
+
+CPU Temp ${exec sensors |grep temp1:|cut -c14-22 |head -n1}
+
+CPU$alignr$cpu%
+${cpubar 6,212}
+
+MEM $mem/$memmax$alignr$memperc%
+${membar 6,212}
+
+SPACE ${fs_used /}/${fs_size /}$alignr$fs_used_perc%
+${fs_bar 6,212 /}
